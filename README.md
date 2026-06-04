@@ -11,6 +11,12 @@
 </div>
 
 ---
+## 👥 Desenvolvedores
+- KEVEN SILVA TEIXEIRA
+- ARTHUR HENRIQUE NASCIMENTO
+- LUCAS ALMEIDA PAIVA LUNA
+
+---
 
 ## 📋 Índice
 
