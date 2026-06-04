@@ -305,7 +305,7 @@ A **separação de responsabilidades** entre as classes também é uma forma de 
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/sistema-bancario.git
+git clone https://github.com/KevWalkzz/A3.git
 cd sistema-bancario
 
 # 2. Compile todos os arquivos
