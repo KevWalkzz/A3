@@ -13,8 +13,9 @@ public class Main {
             System.out.println("3 - Depositar");
             System.out.println("4 - Sacar");
             System.out.println("5 - Transferir");
-            System.out.println("6 - Listar Contas");
-            System.out.println("7 - Listar Clientes");
+            System.out.println("6 - Aplicar juros (Poupança)");
+            System.out.println("7 - Listar Contas");
+            System.out.println("8 - Listar Clientes");
             System.out.println("0 - Sair");
 
             System.out.println("Escolha uma opção: ");
@@ -37,11 +38,15 @@ public class Main {
                     transferir(scanner, banco);
                 }
                 case 6 -> {
-                    listarContas(banco);
+                    aplicarInteresse(scanner, banco);
                 }
                 case 7 -> {
+                    listarContas(banco);
+                }
+                case 8 -> {
                     banco.listarClientes();
                 }
+                
             }
         } while (opcao != 0);
 
@@ -127,6 +132,25 @@ public class Main {
         double valor = scanner.nextDouble();
 
         banco.transferir(origem, destino, valor);
+    }
+
+    public static void aplicarInteresse(Scanner scanner, Banco banco) {
+        System.out.print("Número da conta: ");
+        int numero = scanner.nextInt();
+
+        Conta conta = banco.encontrarConta(numero);
+
+        if (conta == null) {
+            System.out.println("Conta não encontrada.");
+            return;
+        }
+
+        if (conta instanceof ContaPoupanca) {
+            ContaPoupanca poupanca = (ContaPoupanca) conta;
+            poupanca.aplicarInteresse();
+        } else {
+            System.out.println("Essa conta não é do tipo poupança.");
+        }
     }
 
     public static void listarContas(Banco banco) {
