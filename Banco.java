@@ -3,18 +3,34 @@ import java.util.ArrayList;
 public class Banco {
     private ArrayList<Cliente> clientes;
     private ArrayList<Conta> contas;
+    private int proximoNumero = 1;
 
     public Banco() {
         this.clientes = new ArrayList<>();
         this.contas = new ArrayList<>();
     }
 
-
-
     public Cliente criarCliente(String nome, int cpf) {
         Cliente cliente = new Cliente(nome, cpf);
         clientes.add(cliente);
         return cliente;
+    }
+
+    public Conta criarConta(Cliente cliente, String tipo) {
+        int numero = proximoNumero++;
+
+        Conta conta;
+
+        if (tipo.equalsIgnoreCase("Poupanca") || tipo.equalsIgnoreCase("Poupança")) {
+            conta = new ContaPoupanca(numero, 0, cliente, 2.0);
+        } else {
+            conta = new Conta(numero, 0, cliente);
+        }
+
+        contas.add(conta);
+        cliente.adicionarConta(conta);
+
+        return conta;
     }
 
     public Cliente buscarCliente(int cpf) {
@@ -24,23 +40,6 @@ public class Banco {
             }
         }
         return null;
-    }
-
-    public Conta criarConta(Cliente cliente, String tipo) {
-        int numero = contas.size() + 1;
-
-        Conta conta;
-
-        if (tipo.equalsIgnoreCase("Poupanca") || tipo.equalsIgnoreCase("Poupança")) {
-            conta = new ContaPoupanca(numero, 0, cliente.getNome(), 2.0);
-        } else {
-            conta = new Conta(numero, 0, cliente.getNome());
-        }
-
-        contas.add(conta);
-        cliente.adicionarConta(conta);
-
-        return conta;
     }
 
     public Conta encontrarConta(int numero) {
@@ -79,5 +78,28 @@ public class Banco {
         contaDestino.depositarDinheiro(valor);
 
         System.out.println("Transferência efetuada com sucesso!");
+    }
+
+    public void listarClientes() {
+        if (clientes.isEmpty()) {
+            System.out.println("Nenhum cliente encontrado.");
+            return;
+        }
+
+        for (Cliente c : clientes) {
+            System.out.println("Nome: " + c.getNome());
+            System.out.println("CPF: " + c.getCpf());
+
+            if (c.getContas().isEmpty()) {
+                System.out.println("Contas: Nenhuma.");
+            } else {
+                System.out.println("Contas:");
+                for (Conta conta : c.getContas()) {
+                    System.out.println(" - Conta Nº: " + conta.getNumeroDaConta());
+                }
+            }
+
+            System.out.println("----------------------");
+        }
     }
 }

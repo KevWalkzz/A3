@@ -1,9 +1,9 @@
 public class Conta {
     private int numeroDaConta;
     private double saldo;
-    private String dono;
+    private Cliente dono;
 
-    public Conta(int numeroDaConta, double saldo, String dono) {
+    public Conta(int numeroDaConta, double saldo, Cliente dono) {
         this.numeroDaConta = numeroDaConta;
         this.saldo = saldo;
         this.dono = dono;
@@ -17,7 +17,7 @@ public class Conta {
         return saldo;
     }
 
-    public String getDono() {
+    public Cliente getDono() {
         return dono;
     }
 
@@ -34,7 +34,7 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public void setDono(String dono) {
+    public void setDono(Cliente dono) {
         this.dono = dono;
     }
 
@@ -59,6 +59,7 @@ public class Conta {
 
         if (quantia > saldo) {
             System.out.println("Saldo insuficiente.");
+            return;
         }
 
         double saldoAnterior = saldo;
@@ -71,6 +72,6 @@ public class Conta {
     public void listarDados() {
         System.out.println("Número da conta: " + numeroDaConta);
         System.out.println("Saldo: " + saldo);
-        System.out.println("Dono: " + dono);
+        System.out.println("Dono: " + dono.getNome());
     }
 }

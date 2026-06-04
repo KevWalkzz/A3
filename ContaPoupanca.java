@@ -1,7 +1,7 @@
 public class ContaPoupanca extends Conta {
     private double taxaDeInteresse;
 
-    public ContaPoupanca(int numeroDaConta, double saldo, String dono, double taxaDeInteresse) {
+    public ContaPoupanca(int numeroDaConta, double saldo, Cliente dono, double taxaDeInteresse) {
         super(numeroDaConta, saldo, dono);
         this.taxaDeInteresse = taxaDeInteresse;
     }
@@ -15,12 +15,12 @@ public class ContaPoupanca extends Conta {
     }
 
     public void aplicarInteresse() {
-        double saldoAnterior = getSaldo();
+        double saldoAtual = getSaldo();
         double taxa = getTaxaDeInteresse();
-        double novoSaldo = getSaldo() * (1 + taxa / 100);
+        double novoSaldo = saldoAtual * (1 + taxa / 100);
 
         setSaldo(novoSaldo);
-        System.out.println("Saldo antes da taxa: " + saldoAnterior);
+        System.out.println("Saldo antes da taxa: " + saldoAtual);
         System.out.println("Saldo após a taxa: " + novoSaldo);
     }
 

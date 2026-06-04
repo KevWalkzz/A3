@@ -14,6 +14,7 @@ public class Main {
             System.out.println("4 - Sacar");
             System.out.println("5 - Transferir");
             System.out.println("6 - Listar Contas");
+            System.out.println("7 - Listar Clientes");
             System.out.println("0 - Sair");
 
             System.out.println("Escolha uma opção: ");
@@ -37,6 +38,9 @@ public class Main {
                 }
                 case 6 -> {
                     listarContas(banco);
+                }
+                case 7 -> {
+                    banco.listarClientes();
                 }
             }
         } while (opcao != 0);
