@@ -9,10 +9,21 @@ public class Banco {
         this.contas = new ArrayList<>();
     }
 
+
+
     public Cliente criarCliente(String nome, int cpf) {
         Cliente cliente = new Cliente(nome, cpf);
         clientes.add(cliente);
         return cliente;
+    }
+
+    public Cliente buscarCliente(int cpf) {
+        for (Cliente c : clientes) {
+            if (c.getCpf() == cpf) {
+                return c;
+            }
+        }
+        return null;
     }
 
     public Conta criarConta(Cliente cliente, String tipo) {
@@ -38,8 +49,11 @@ public class Banco {
                 return c;
             }
         }
-        System.out.println("Nenhuma conta encontrada com este número: " + numero);
         return null;
+    }
+
+    public ArrayList<Conta> getContas() {
+        return contas;
     }
 
     public void transferir(int origem, int destino, double valor) {
