@@ -1,25 +1,14 @@
-public class Cliente extends Conta {
+import java.util.ArrayList;
+
+public class Cliente {
     private String nome;
     private int cpf;
-    private String[] contas;
+    private ArrayList<Conta> contas;
 
-    public Cliente(String nome, int cpf, String[] contas, int numeroDaConta, double saldo, String dono) {
-        super(numeroDaConta, saldo, dono);
+    public Cliente(String nome, int cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        this.contas = contas;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setContas(String[] contas) {
-        this.contas = contas;
+        this.contas = new ArrayList<>();
     }
 
     public String getNome() {
@@ -30,11 +19,20 @@ public class Cliente extends Conta {
         return cpf;
     }
 
-    public String[] getContas() {
+    public ArrayList<Conta> getContas() {
         return contas;
     }
 
-    public void adicionarConta(String conta) {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
+
+    public void adicionarConta(Conta contaParaAdicionar) {
+        contas.add(contaParaAdicionar);
     }
 
 }

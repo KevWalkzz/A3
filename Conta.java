@@ -9,18 +9,6 @@ public class Conta {
         this.dono = dono;
     }
 
-    public void setNumeroDaConta(int numeroDaConta) {
-        this.numeroDaConta = numeroDaConta;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public void setDono(String dono) {
-        this.dono = dono;
-    }
-
     public int getNumeroDaConta() {
         return numeroDaConta;
     }
@@ -33,21 +21,56 @@ public class Conta {
         return dono;
     }
 
+    public void setNumeroDaConta(int numeroDaConta) {
+        this.numeroDaConta = numeroDaConta;
+    }
+
+    public void setSaldo(double saldo) {
+        if (saldo < 0) {
+            System.out.println("Saldo negativo não é permitido.");
+            return;
+        }
+
+        this.saldo = saldo;
+    }
+
+    public void setDono(String dono) {
+        this.dono = dono;
+    }
+
     public void depositarDinheiro(double quantia) {
-        setSaldo(this.saldo + quantia);
-        System.out.println("Saldo Anterior: " + getSaldo());
-        System.out.println("Novo Saldo: " + getSaldo());
+        if (quantia <= 0) {
+            System.out.println("Valor inválido para depósito.");
+            return;
+        }
+
+        double saldoAnterior = saldo;
+        saldo += quantia;
+
+        System.out.println("Saldo Anterior: " + saldoAnterior);
+        System.out.println("Novo Saldo: " + saldo);
     }
 
     public void retirarDinheiro(double quantia) {
-        setSaldo(this.saldo - quantia);
-        System.out.println("Saldo Anterior: " + getSaldo());
-        System.out.println("Novo Saldo: " + getSaldo());
+        if (quantia <= 0) {
+            System.out.println("Valor inválido para saque.");
+            return;
+        }
+
+        if (quantia > saldo) {
+            System.out.println("Saldo insuficiente.");
+        }
+
+        double saldoAnterior = saldo;
+        saldo -= quantia;
+
+        System.out.println("Saldo Anterior: " + saldoAnterior);
+        System.out.println("Novo Saldo: " + saldo);
     }
 
     public void listarDados() {
-        System.out.println("Número da conta: " + getNumeroDaConta());
-        System.out.println("Saldo: " + getSaldo());
-        System.out.println("Dono: " + getDono());
+        System.out.println("Número da conta: " + numeroDaConta);
+        System.out.println("Saldo: " + saldo);
+        System.out.println("Dono: " + dono);
     }
 }
