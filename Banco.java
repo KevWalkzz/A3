@@ -87,6 +87,7 @@ public class Banco {
         }
 
         for (Cliente c : clientes) {
+            System.out.println("----------------------");
             System.out.println("Nome: " + c.getNome());
             System.out.println("CPF: " + c.getCpf());
 

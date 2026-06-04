@@ -131,6 +131,7 @@ public class Main {
 
     public static void listarContas(Banco banco) {
         for (Conta c : banco.getContas()) {
+            System.out.println("----------------------");
             c.listarDados();
             System.out.println("----------------------");
         }

@@ -16,6 +16,11 @@ public class ContaPoupanca extends Conta {
 
     public void aplicarInteresse() {
         double saldoAtual = getSaldo();
+
+        if (saldoAtual <= 0) {
+            System.out.println("Não há saldo para aplicar juros.");
+        }
+
         double taxa = getTaxaDeInteresse();
         double novoSaldo = saldoAtual * (1 + taxa / 100);
 
