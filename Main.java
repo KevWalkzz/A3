@@ -17,6 +17,7 @@ public class Main {
             System.out.println("7 - Listar Contas");
             System.out.println("8 - Listar Clientes");
             System.out.println("0 - Sair");
+            System.out.println("====================");
 
             System.out.println("Escolha uma opção: ");
             opcao = scanner.nextInt();
