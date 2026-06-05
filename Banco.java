@@ -74,7 +74,10 @@ public class Banco {
             return;
         }
 
+        System.out.println("Conta Originária");
         contaOrigem.retirarDinheiro(valor);
+        System.out.println("----------------------");
+        System.out.println("Conta Destinatária");
         contaDestino.depositarDinheiro(valor);
 
         System.out.println("Transferência efetuada com sucesso!");
